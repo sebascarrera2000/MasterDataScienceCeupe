@@ -44,6 +44,7 @@ El proyecto integra **EDA de los microdatos del ICFES (Saber 11 y Saber Pro)**, 
  ┣ 📁 saberpro-ml-full       # API ML con FastAPI con training
  ┣ 📁 frontend-react         # Frontend en React + TSX
  ┣ 📁 Basededatos            # Basededatos epxortados
+ ┣ 📁 dataicfes.txt          # Basededatos total para poder realizar EDA
  ┗ README.md
 ```
 
