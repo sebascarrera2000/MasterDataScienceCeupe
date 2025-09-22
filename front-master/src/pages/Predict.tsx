@@ -214,6 +214,10 @@ export const Predict: React.FC = () => {
           C. Naturales 0–100 · C. Sociales y Ciudadanas 0–100 · Inglés 0–100.
         </p>
 
+         <p className="text-xs text-gray-500">
+          <strong>Rangos Saber pro:</strong> Global 0–300 
+        </p>
+
         {/* === FORMULARIO === */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Datos básicos */}
