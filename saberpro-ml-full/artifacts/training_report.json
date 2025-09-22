@@ -1,0 +1,30 @@
+{
+  "model": "HistGradientBoostingRegressor",
+  "train_quantiles": true,
+  "n_samples": 1260866,
+  "rmse_mean": 9.890242536487907,
+  "rmse_std": 1.8061834865668218,
+  "r2_mean": 0.2360391415504251,
+  "r2_std": 0.13177642757200225,
+  "features": [
+    "s11_punt_global",
+    "s11_punt_matematicas",
+    "s11_punt_lectura_critica",
+    "s11_punt_sociales_ciudadanas",
+    "s11_punt_c_naturales",
+    "s11_punt_ingles",
+    "anio",
+    "inst_origen",
+    "inst_caracter_academico"
+  ],
+  "intervals": {
+    "quantiles": [
+      0.1,
+      0.9
+    ],
+    "artifacts": [
+      "pipeline_q10.pkl",
+      "pipeline_q90.pkl"
+    ]
+  }
+}
