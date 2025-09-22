@@ -1,7 +1,5 @@
 # 📊 SaberPro Analytics — Plataforma de Análisis y Predicción
 
-![GitHub repo size](https://img.shields.io/github/repo-size/sebascarrera2000/saberpro-analytics?color=blue&label=Tamaño%20Repo)
-![GitHub last commit](https://img.shields.io/github/last-commit/sebascarrera2000/saberpro-analytics?color=green&label=Última%20Actualización)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 Este repositorio contiene el desarrollo completo del **Trabajo de Fin de Máster (TFM)** en **Data Science (CEUPE)**.  
