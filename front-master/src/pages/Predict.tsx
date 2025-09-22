@@ -16,7 +16,7 @@ import {
 } from "recharts";
 import { School, BookOpen, GraduationCap, Calculator } from "lucide-react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://masterdatascienceceupe.onrender.com";
 // Endpoint de predicción
 const API_PREDICT = "http://127.0.0.1:8005/api/predict";
 
