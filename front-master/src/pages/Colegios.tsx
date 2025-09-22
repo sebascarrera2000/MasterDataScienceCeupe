@@ -9,7 +9,7 @@ import { Select } from '../components/ui/Select';
 import { useStore } from '../store';
 import { ColegioEDA } from '../types';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { School, Users, TrendingUp, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const YEAR_OPTIONS = [
   { value: '2016', label: '2016' },
@@ -94,7 +94,6 @@ export const Colegios: React.FC = () => {
 
   useEffect(() => {
     fetchRank();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ano, filters?.municipio, filters?.institucion]);
 
   const totalPages = useMemo(
@@ -158,35 +157,71 @@ export const Colegios: React.FC = () => {
           ) : error ? (
             <Alert variant="error">{error}</Alert>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left">Colegio</th>
-                    <th className="px-6 py-3">Estudiantes</th>
-                    <th className="px-6 py-3">Media Global</th>
-            
-                    <th className="px-6 py-3">Rendimiento</th>
-                    <th className="px-6 py-3">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {colegios.map((c, i) => (
-                    <tr key={`${c.colegio_nombre}-${i}`} className="hover:bg-gray-50">
-                      <td className="px-6 py-4">{c.colegio_nombre}<br /><span className="text-sm text-gray-500">{c.municipio}</span></td>
-                      <td className="px-6 py-4">{c.n_estu}</td>
-                      <td className="px-6 py-4">{c.media_global.toFixed(1)}<br /><span className="text-sm">σ={c.sd_global.toFixed(1)}</span></td>
-                      <td className="px-6 py-4">{getPerformanceBadge(c.media_global)}</td>
-                      <td className="px-6 py-4">
-                        <Button size="sm" variant="outline" onClick={() => { setSelectedColegio(c); setShowModal(true); }}>
-                          <Eye className="h-4 w-4 mr-1" /> Ver detalles
-                        </Button>
-                      </td>
+            <>
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left">Colegio</th>
+                      <th className="px-6 py-3">Estudiantes</th>
+                      <th className="px-6 py-3">Media Global</th>
+                      <th className="px-6 py-3">Rendimiento</th>
+                      <th className="px-6 py-3">Acciones</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {colegios.map((c, i) => (
+                      <tr key={`${c.colegio_nombre}-${i}`} className="hover:bg-gray-50">
+                        <td className="px-6 py-4">
+                          {c.colegio_nombre}
+                          <br />
+                          <span className="text-sm text-gray-500">{c.municipio}</span>
+                        </td>
+                        <td className="px-6 py-4">{c.n_estu}</td>
+                        <td className="px-6 py-4">
+                          {c.media_global.toFixed(1)}
+                          <br />
+                          <span className="text-sm">σ={c.sd_global.toFixed(1)}</span>
+                        </td>
+                        <td className="px-6 py-4">{getPerformanceBadge(c.media_global)}</td>
+                        <td className="px-6 py-4">
+                          <Button size="sm" variant="outline" onClick={() => { setSelectedColegio(c); setShowModal(true); }}>
+                            <Eye className="h-4 w-4 mr-1" /> Ver detalles
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Paginación */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-between mt-6">
+                  <div className="text-sm text-gray-700">
+                    Página {currentPage} de {totalPages}
+                  </div>
+                  <div className="flex space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                      disabled={currentPage === 1}
+                    >
+                      <ChevronLeft className="h-4 w-4" /> Anterior
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                      disabled={currentPage === totalPages}
+                    >
+                      Siguiente <ChevronRight className="h-4 w-4 ml-1" />
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </Card>
 
