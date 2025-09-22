@@ -24,7 +24,7 @@ const PERIOD_OPTIONS = [
   { value: '2', label: 'Periodo 2' }
 ];
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:3000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://masterdatascienceceupe.onrender.com';
 
 export const Colegios: React.FC = () => {
   const { filters } = useStore();
